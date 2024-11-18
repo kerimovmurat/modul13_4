@@ -27,11 +27,13 @@ async def set_growth(message, state):
     await state.update_data(age=int(message.text))
     await message.answer('Введите свой рост:')
     await UserState.growth.set()
+    
 @dp.message_handler(state=UserState.growth)
 async def set_weight(message, state):
     await state.update_data(growth=int(message.text))
     await message.answer('Введите свой вес:')
     await UserState.weight.set()
+    
 @dp.message_handler(state=UserState.weight)
 async def send_calories(message, state):
     await state.update_data(weight=int(message.text))
